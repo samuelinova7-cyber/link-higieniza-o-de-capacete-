@@ -9,19 +9,14 @@ import {
   Wind, 
   Zap, 
   CheckCircle2, 
-  Zap as Sparkles,
   MapPin,
   ArrowRight,
   Droplets,
   Timer,
   Lock,
-  Search,
   CheckCircle,
   Menu,
-  ChevronRight,
-  BarChart3,
-  Globe,
-  Ship
+  ChevronRight
 } from "lucide-react";
 import { useRef } from "react";
 
@@ -67,9 +62,6 @@ const Header = () => {
 
       <div className="hidden md:flex gap-10 text-[11px] font-bold uppercase tracking-[0.2em] opacity-60">
         <a href="#how" className="hover:opacity-100 hover:text-brand-gold transition-all">Como Funciona</a>
-        <a href="#tech" className="hover:opacity-100 hover:text-brand-gold transition-all">Tecnologia</a>
-        <a href="#business" className="hover:opacity-100 hover:text-brand-gold transition-all">Negócios</a>
-        <a href="#import" className="hover:opacity-100 hover:text-brand-gold transition-all">Importação</a>
       </div>
 
       <div className="flex items-center gap-4">
@@ -97,12 +89,22 @@ export default function App() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-12 pb-24 md:pt-32 md:pb-40 px-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+        {/* Blurred Background Image */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <img 
+            src="https://res.cloudinary.com/dqukldtq1/image/upload/v1777251445/WhatsApp_Image_2026-04-26_at_9.50.04_PM_3_drd1a8.jpg" 
+            alt="Hero Background" 
+            className="w-full h-full object-cover scale-110 blur-xl opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-navy via-transparent to-brand-navy" />
+        </div>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 items-center relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-7 z-10 space-y-8"
+            className="md:col-span-7 space-y-8"
           >
             <span className="inline-block px-4 py-1.5 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-[10px] tracking-[0.2em] font-bold uppercase">
               Tecnologia 360° Disponível
@@ -122,10 +124,8 @@ export default function App() {
                 Ficha Técnica
               </button>
             </div>
-          </motion.div>
 
-
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 pt-4">
               <div className="glass p-4 rounded-2xl flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold">
                   <Wind size={20} />
@@ -137,7 +137,7 @@ export default function App() {
               </div>
               <div className="glass p-4 rounded-2xl flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold">
-                  <Sparkles size={20} />
+                  <Zap size={20} />
                 </div>
                 <div>
                   <div className="text-[10px] text-slate-500 uppercase font-bold">Insuflagem</div>
@@ -145,13 +145,14 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </motion.div>
 
           <motion.div 
             style={{ y: y1 }}
             className="hidden md:block md:col-span-5 relative"
           >
             {/* Shimmering Hero Image */}
-            <div className="relative group overflow-hidden rounded-3xl border-4 border-white/5 glow-gold shadow-2xl">
+            <div className="relative group overflow-hidden rounded-3xl border-4 border-white/5 glow-gold shadow-2xl bg-brand-carbon">
               <div className="absolute inset-0 bg-gradient-to-tr from-brand-navy/60 to-transparent z-10" />
               
               {/* Shimmer reflection animation */}
@@ -162,13 +163,13 @@ export default function App() {
               />
 
               <img 
-                src={LOGO_URL} 
-                alt="Link Higienizador" 
+                src="https://res.cloudinary.com/dqukldtq1/image/upload/v1777251445/WhatsApp_Image_2026-04-26_at_9.50.04_PM_3_drd1a8.jpg" 
+                alt="Link Higienizador Machine" 
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
               />
 
               <div className="absolute top-6 left-6 z-20 flex gap-2">
-                <div className="bg-brand-carbon/80 backdrop-blur-md px-3 py-1 rounded text-[10px] font-mono border border-brand-gold/20">CABINA_01_LINK</div>
+                <div className="bg-brand-carbon/80 backdrop-blur-md px-3 py-1 rounded text-[10px] font-mono border border-brand-gold/20">LINK_SYSTEM_v2.4</div>
               </div>
 
               <div className="absolute bottom-6 right-6 z-20 flex flex-col items-end">
@@ -180,231 +181,317 @@ export default function App() {
         </div>
       </section>
 
-      <section id="tech" className="py-32 px-10 relative">
+      {/* How to Use Section */}
+      <section id="how" className="py-32 px-10 relative bg-brand-carbon/30">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-20">
-            <div className="space-y-4">
-              <span className="text-brand-gold text-[10px] font-bold uppercase tracking-[0.3em]">Hardware & Ciência</span>
-              <h3 className="text-4xl md:text-6xl font-bold leading-none uppercase">Engenharia de <br/><span className="opacity-50">Alto Desempenho</span></h3>
-            </div>
-            <p className="text-slate-400 max-w-md text-sm font-light">
-              Equipamento desenvolvido para o uso intenso, a cabina Link utiliza LEDs UVC e Ozônio para garantir saúde sob o seu capacete.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-12 grid-rows-2 gap-6">
-            <div className="md:col-span-8 glass rounded-3xl p-10 flex flex-col justify-between group relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8">
-                <div className="w-24 h-24 bg-brand-gold/10 rounded-full blur-3xl group-hover:bg-brand-gold/20 transition-all"></div>
-              </div>
-              <div className="relative z-10 flex-1 flex flex-col justify-between">
-                <div>
-                  <Shield className="w-12 h-12 text-brand-gold mb-8 group-hover:scale-110 transition-transform" />
-                  <h4 className="text-3xl font-bold mb-4 uppercase tracking-tighter">Esterilização UVC & Ozônio</h4>
-                  <p className="text-slate-400 max-w-sm font-light leading-relaxed">
-                    Eliminação de <span className="text-brand-gold font-bold">99.9%</span> de germes e bactérias através da luz germicida de espectro curto e oxigênio reativo.
-                  </p>
-                </div>
-                <div className="mt-8 flex gap-4">
-                  <span className="px-4 py-1.5 rounded-full border border-white/10 text-[9px] font-bold tracking-widest uppercase opacity-60">Bio-Shield</span>
-                  <span className="px-4 py-1.5 rounded-full border border-white/10 text-[9px] font-bold tracking-widest uppercase opacity-60">UVC Tech</span>
-                </div>
-              </div>
-              
-              <div className="md:w-1/2 min-h-[300px] md:h-auto relative rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+            {/* Image Column */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5 relative"
+            >
+              <div className="relative group overflow-hidden rounded-[2.5rem] border border-white/10 glow-blue shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent z-10" />
                 <motion.div 
                   animate={{ x: ["-100%", "200%"] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
-                  className="absolute inset-y-0 w-1/2 skew-x-[-25deg] bg-gradient-to-r from-transparent via-brand-gold/10 to-transparent z-20"
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+                  className="absolute inset-y-0 w-1/2 skew-x-[-25deg] bg-gradient-to-r from-transparent via-white/10 to-transparent z-20"
                 />
                 <img 
-                  src="https://res.cloudinary.com/dqukldtq1/image/upload/v1776996996/WhatsApp_Image_2026-04-23_at_11.02.00_PM_2_r9j37e.jpg" 
-                  alt="Higienização Interna" 
-                  className="w-full h-full object-contain md:object-cover transition-transform duration-700 group-hover:scale-110"
+                  src="https://res.cloudinary.com/dqukldtq1/image/upload/v1777251456/WhatsApp_Image_2026-04-26_at_9.50.03_PM_jwsofj.jpg" 
+                  alt="Link Station" 
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-              </div>
-            </div>
-
-            <div className="md:col-span-4 glass rounded-3xl p-10 flex flex-col items-center text-center justify-center">
-              <div className="w-24 h-24 rounded-full bg-brand-gold/10 flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(255,204,0,0.1)]">
-                <Timer className="w-10 h-10 text-brand-gold" />
-              </div>
-              <h4 className="text-2xl font-bold mb-2 uppercase">Ciclo Rápido</h4>
-              <p className="text-slate-400 text-sm font-light">Apenas 5-10 minutos para um resultado profissional e seco.</p>
-            </div>
-
-            <div className="md:col-span-4 glass rounded-3xl p-10 bg-gradient-to-br from-brand-blue/10 to-transparent flex flex-col group overflow-hidden relative">
-              <div className="relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-brand-blue/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                  <Wind className="w-7 h-7 text-brand-gold" />
+                
+                <div className="absolute bottom-10 left-10 z-20">
+                  <div className="glass px-4 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase text-brand-gold italic">
+                    Self-service | Rápido | Sem Bagunça
+                  </div>
                 </div>
-                <h4 className="text-xl font-bold mb-2 uppercase">Secagem 3D Duplex</h4>
-                <p className="text-slate-400 text-sm font-light leading-relaxed mb-6">Fluxo de ar circular de alta pressão que retira toda a humidade sem deformar as espumas internas.</p>
               </div>
-              
-              <div className="mt-auto relative aspect-[9/16] max-h-[300px] md:max-h-none rounded-2xl overflow-hidden border border-white/5 opacity-60 group-hover:opacity-100 transition-all duration-500">
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent z-10" />
+            </motion.div>
+
+            {/* Info Column */}
+            <div className="lg:col-span-7 space-y-12">
+              <div className="space-y-4">
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-brand-gold">Fluxo de Experiência</span>
+                <h2 className="text-4xl md:text-6xl font-bold uppercase leading-none">O Produto <br/><span className="opacity-50">Link Higienizador</span></h2>
+                <p className="text-slate-400 font-light max-w-xl">
+                  Estação self-service projetada para higienizar equipamentos de forma autônoma e profissional em menos de 10 minutos.
+                </p>
+              </div>
+
+              {/* Steps */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  { n: "01", t: "Coloque o Capacete", d: "Insira o equipamento no compartimento central." },
+                  { n: "02", t: "Escolha o Ciclo", d: "Selecione o tipo de higienização na tela touch HD." },
+                  { n: "03", t: "Pagamento Digital", d: "Transação automática via terminal Nayax integrado." },
+                  { n: "04", t: "Retirada Pronta", d: "Retire seu capacete seco e esterilizado." }
+                ].map((step, i) => (
+                  <div key={i} className="glass p-6 rounded-2xl flex items-start gap-4 hover:border-brand-gold/30 transition-colors">
+                    <span className="text-xl font-bold text-brand-gold opacity-40">{step.n}</span>
+                    <div>
+                      <h4 className="text-sm font-bold uppercase mb-1">{step.t}</h4>
+                      <p className="text-[11px] text-slate-500 font-light leading-relaxed">{step.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Technical Grid */}
+              <div className="glass rounded-3xl p-8 overflow-hidden">
+                <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-gold mb-6">Especificações Técnicas</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                  <div>
+                    <div className="text-xs font-bold text-white mb-1">Interface</div>
+                    <div className="text-[10px] text-slate-500 leading-tight">Touch HD All-in-One</div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-white mb-1">Pagamento</div>
+                    <div className="text-[10px] text-slate-500 leading-tight">Terminal Nayax Integrado</div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-white mb-1">Marketing</div>
+                    <div className="text-[10px] text-slate-500 leading-tight">Área para Publicidade</div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-white mb-1">Mobilidade</div>
+                    <div className="text-[10px] text-slate-500 leading-tight">Estrutura com Rodízios</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Tech Section */}
+      <section className="py-32 px-10 relative overflow-hidden bg-brand-navy">
+        <div className="absolute top-1/2 left-0 w-64 h-64 bg-brand-gold/5 blur-[120px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="space-y-10 order-2 lg:order-1">
+              <div className="space-y-4">
+                <span className="text-brand-gold text-[10px] font-bold uppercase tracking-[0.3em]">Funcionamento do Sistema</span>
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight uppercase">Tecnologia de <br/><span className="text-brand-gold">Névoa Seca (Dry Fog)</span></h2>
+                <p className="text-slate-400 font-light leading-relaxed">
+                  Baseado em um processo de <strong>nebulização de alta performance</strong>, o sistema Link garante esterilização total sem encharcar o acolchoado.
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                {[
+                  { t: "Névoa Ultra-fina", d: "Micropartículas atomizadas preenchem todo o volume da câmara, penetrando nas fibras e canais de ventilação." },
+                  { t: "Ação 360° Real", d: "A fumaça circula em vórtice, eliminando zonas mortas onde a limpeza manual não alcança." },
+                  { n: "03", t: "Esterilização Total", d: "Neutraliza as bactérias que causam o mau cheiro (suor e umidade), agindo como fungicida e bactericida." },
+                   { n: "04", t: "Pronto para Uso", d: "O motociclista pode utilizar o capacete imediatamente após o ciclo, sem sensação de umidade." }
+                ].slice(0, 4).map((tech, i) => (
+                  <div key={i} className="flex gap-6 group">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-gold/5 border border-brand-gold/10 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-navy transition-all">
+                      <Zap size={20} />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold uppercase tracking-tight mb-1">{tech.t}</h4>
+                      <p className="text-sm text-slate-500 font-light leading-relaxed">{tech.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative order-1 lg:order-2"
+            >
+              <div className="relative aspect-[9/16] rounded-[3rem] overflow-hidden border border-white/10 glow-gold shadow-2xl lg:max-h-[700px] mx-auto">
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src="https://res.cloudinary.com/dqukldtq1/video/upload/v1777252106/video_Grok_00010__ggildd.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/40 to-transparent pointer-events-none" />
+                <div className="absolute top-8 right-8">
+                  <div className="bg-brand-gold/20 backdrop-blur-md px-4 py-2 rounded-full border border-brand-gold/30 text-[10px] font-bold text-brand-gold uppercase tracking-widest animate-pulse">
+                    LIVE_RENDER
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bacteriostatic Protection Section */}
+      <section className="py-32 px-10 relative overflow-hidden bg-brand-carbon/20">
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-gold/5 blur-[150px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+            
+            {/* Image Column */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-6 relative"
+            >
+              <div className="relative group overflow-hidden rounded-[3rem] border border-white/10 glow-gold shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-tr from-brand-navy/40 to-transparent z-10" />
+                
+                {/* Shimmer effect */}
+                <motion.div 
+                  animate={{ x: ["-100%", "200%"] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatDelay: 1.5 }}
+                  className="absolute inset-y-0 w-full skew-x-[-25deg] bg-gradient-to-r from-transparent via-white/20 to-transparent z-20"
+                />
+
+                <img 
+                  src="https://res.cloudinary.com/dqukldtq1/image/upload/v1777252325/WhatsApp_Image_2026-04-26_at_9.50.04_PM_1_m6iiln.jpg" 
+                  alt="Proteção Bacteriostática" 
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+
+                <div className="absolute top-8 left-8 z-20">
+                  <div className="bg-brand-gold text-brand-navy px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                    <Shield size={14} /> BARREIRA_ATIVA
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Content Column */}
+            <div className="lg:col-span-6 space-y-10">
+              <div className="space-y-4">
+                <span className="text-brand-gold text-[10px] font-bold uppercase tracking-[0.3em]">Defesa de Longa Duração</span>
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight uppercase">Taxa Bacteriostática <br/><span className="text-brand-gold">Superior a 99,9%</span></h2>
+                <p className="text-slate-400 font-light leading-relaxed">
+                  O sistema Link não apenas limpa, mas cria um escudo protetor que impede a reprodução de colônias bacterianas no interior do seu equipamento.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-8">
+                <div className="flex gap-6 group">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-navy transition-all duration-300">
+                    <Zap size={24} />
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="text-xl font-bold uppercase tracking-tight">Taxa de Inibição Direta</h4>
+                    <p className="text-sm text-slate-500 font-light leading-relaxed">
+                      O efeito residual mantém o capacete protegido por muito mais tempo, prevenindo foliculite e irritações no couro cabeludo causadas pelo acúmulo de suor.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 group">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-navy transition-all duration-300">
+                    <Lock size={24} />
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="text-xl font-bold uppercase tracking-tight">Proteção 360°</h4>
+                    <p className="text-sm text-slate-500 font-light leading-relaxed">
+                      Barreira de defesa total que isola microrganismos e agentes nocivos, garantindo uma pilotagem segura e higiênica todo o tempo.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <div className="inline-flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-brand-gold bg-brand-gold/10 px-6 py-3 rounded-full border border-brand-gold/20">
+                  <CheckCircle size={14} /> RESULTADO TÉCNICO COMPROVADO
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 3D Drying Section */}
+      <section className="py-32 px-10 relative overflow-hidden bg-brand-navy">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-brand-blue/5 blur-[120px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+            
+            {/* Content Column */}
+            <div className="lg:col-span-6 space-y-10 order-2 lg:order-1">
+              <div className="space-y-4">
+                <span className="text-brand-gold text-[10px] font-bold uppercase tracking-[0.3em]">Engenharia Térmica</span>
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight uppercase">Secagem Tridimensional <br/><span className="text-brand-gold">de Alta Potência</span></h2>
+                <p className="text-slate-400 font-light leading-relaxed">
+                  A tecnologia que permite o uso imediato. O ar quente envolve o equipamento em um fluxo circular contínuo, penetrando nas espumas mais densas.
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                <div className="glass p-8 rounded-3xl border-brand-blue/20 hover:border-brand-gold/30 transition-colors group">
+                  <div className="flex gap-6 items-start">
+                    <div className="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-gold group-hover:scale-110 transition-transform">
+                      <Wind size={24} />
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="text-lg font-bold uppercase tracking-tight">Circulação Duplex 360°</h4>
+                      <p className="text-sm text-slate-500 font-light leading-relaxed">
+                        Sistema de fluxo duplo de ar que cria um redemoinho de calor constante, eliminando a umidade residual da névoa higienizadora em tempo recorde.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="glass p-8 rounded-3xl border-brand-blue/20 hover:border-brand-gold/30 transition-colors group">
+                  <div className="flex gap-6 items-start">
+                    <div className="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-gold group-hover:scale-110 transition-transform">
+                      <Timer size={24} />
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="text-lg font-bold uppercase tracking-tight">Eficiência & Conforto Térmico</h4>
+                      <p className="text-sm text-slate-500 font-light leading-relaxed">
+                        Temperatura controlada para extermínio de fungos sem danificar viseiras ou materiais sensíveis. O capacete sai seco e confortável para pilotar.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Image Column */}
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-6 order-1 lg:order-2"
+            >
+              <div className="relative group overflow-hidden rounded-[3rem] border border-white/10 glow-blue shadow-2xl bg-brand-carbon">
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-transparent z-10" />
+                
+                {/* Shimmer effect */}
                 <motion.div 
                   animate={{ x: ["-100%", "200%"] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
                   className="absolute inset-y-0 w-full skew-x-[-25deg] bg-gradient-to-r from-transparent via-brand-gold/10 to-transparent z-20"
                 />
+
                 <img 
-                  src="https://res.cloudinary.com/dqukldtq1/image/upload/v1776996996/WhatsApp_Image_2026-04-23_at_11.02.00_PM_3_v5jfq3.jpg" 
-                  alt="Secagem 3D" 
-                  className="w-full h-full object-contain md:object-cover transition-transform duration-700 group-hover:scale-110"
+                  src="https://res.cloudinary.com/dqukldtq1/image/upload/v1777252658/WhatsApp_Image_2026-04-26_at_9.50.03_PM_1_bdfcs4.jpg" 
+                  alt="Tecnologia de Secagem Duplex" 
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-              </div>
-            </div>
-
-            <div className="md:col-span-8 glass rounded-3xl p-10 flex flex-col md:flex-row gap-10 items-center group overflow-hidden">
-               <div className="flex-1 space-y-6">
-                <h4 className="text-2xl font-bold uppercase">Limpeza por Fumaça Técnica</h4>
-                <p className="text-slate-400 text-sm font-light leading-relaxed">
-                  Transformamos o agente higienizante em uma névoa seca que penetra em cada poro, alcançando áreas que a lavagem comum ignora completamente.
-                </p>
-                <div className="flex items-center gap-3 text-brand-gold text-[10px] font-bold tracking-widest uppercase">
-                  <div className="w-1.5 h-1.5 bg-brand-gold rounded-full shadow-[0_0_8px_rgba(255,215,0,0.8)]"></div>
-                  100% Eficácia em Zonas Mortas
-                </div>
-              </div>
-              <div className="w-full md:w-1/2 aspect-[9/16] max-h-[300px] md:max-h-full rounded-2xl bg-zinc-900/50 relative overflow-hidden flex items-center justify-center border border-white/5">
-                <div className="absolute inset-0 bg-brand-gold/5 animate-pulse" />
-                <motion.div 
-                  animate={{ x: ["-100%", "200%"] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 1.5 }}
-                  className="absolute inset-y-0 w-full skew-x-[-25deg] bg-gradient-to-r from-transparent via-brand-gold/10 to-transparent z-20"
-                />
-                <img 
-                  src="https://res.cloudinary.com/dqukldtq1/image/upload/v1776996996/WhatsApp_Image_2026-04-23_at_11.02.00_PM_wq0pxm.jpg" 
-                  alt="Limpeza por Fumaça" 
-                  className="w-full h-full object-contain md:object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Business Viability section */}
-      <section id="business" className="py-32 px-10 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-gold/[0.02] blur-[150px] pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto">
-          <div className="glass bg-brand-gold/[0.02] border-brand-gold/20 rounded-[3rem] p-12 md:p-24 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-gold/[0.05] to-transparent pointer-events-none" />
-            
-            <div className="grid md:grid-cols-2 gap-16 relative z-10 items-center">
-              <div className="space-y-8">
-                <span className="inline-block px-4 py-1.5 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-[10px] font-bold uppercase tracking-[0.2em]">Viabilidade Financeira</span>
-                <h3 className="text-5xl md:text-7xl font-bold leading-[0.9] uppercase tracking-tighter">
-                  Um modelo <br /> <span className="text-brand-gold">de Lucro</span> <br /> Superior.
-                </h3>
-                <p className="text-slate-400 font-light leading-relaxed max-w-sm">
-                  Operação simplificada com baixíssimo custo de manutenção e alta demanda recorrente.
-                </p>
                 
-                <div className="space-y-6 pt-4">
-                  {[
-                    { t: "Custo por operação", v: "R$ 1,00" },
-                    { t: "Rendimento", v: "300 Usos / 5L" },
-                    { t: "Configuração", v: "Bivolt Plug & Play" }
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-center gap-6 group">
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand-gold group-hover:scale-150 transition-transform"></div>
-                      <div className="flex flex-col">
-                        <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">{item.t}</span>
-                        <span className="text-lg font-bold text-white">{item.v}</span>
-                      </div>
-                    </div>
-                  ))}
+                <div className="absolute top-8 right-8 z-20">
+                  <div className="bg-brand-blue/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-[10px] font-bold text-white uppercase tracking-widest">
+                    HEAT_SYSTEM: ACTIVE
+                  </div>
                 </div>
               </div>
-              
-              <div className="flex flex-col justify-center">
-                <div className="glass bg-white/5 border-white/10 p-12 rounded-[2.5rem] text-center shadow-2xl relative">
-                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-brand-gold/20 rounded-2xl flex items-center justify-center text-brand-gold">
-                    <BarChart3 size={24} />
-                  </div>
-                  <div className="text-[11px] font-bold uppercase tracking-[0.4em] mb-4 text-brand-gold opacity-60 italic">Preço Sugerido</div>
-                  <div className="text-7xl md:text-9xl font-bold tracking-tighter text-white">R$ 30</div>
-                  <div className="text-xs font-bold text-slate-500 uppercase mt-4">Retorno Bruto / 5 Minutos</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </motion.div>
 
-      {/* Import Program */}
-      <section id="import" className="py-32 px-10 relative">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
-          <div className="relative order-2 md:order-1">
-             <div className="absolute -inset-10 bg-brand-purple/10 blur-[120px] rounded-full" />
-             <div className="relative glass border-white/5 p-12 rounded-[2.5rem] space-y-10 overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-purple/20 blur-3xl"></div>
-                <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-brand-purple/20 flex items-center justify-center shadow-[0_0_20px_rgba(112,0,255,0.2)]">
-                    <Ship className="w-8 h-8 text-brand-purple" />
-                  </div>
-                  <h3 className="text-3xl font-bold uppercase tracking-tight">Importação <br/><span className="text-brand-purple">Conjunta.</span></h3>
-                </div>
-                
-                <p className="text-slate-400 font-light leading-relaxed">
-                  Traga a inovação para sua região com condições exclusivas via container fechado e suporte logístico completo.
-                </p>
-                
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
-                    <div className="text-3xl font-bold text-white mb-1">80</div>
-                    <div className="text-[9px] text-slate-500 uppercase font-black tracking-widest">Unidades / Container</div>
-                  </div>
-                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
-                    <div className="text-3xl font-bold text-white mb-1">Global</div>
-                    <div className="text-[9px] text-slate-500 uppercase font-black tracking-widest">Suporte Logístico</div>
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-white/5">
-                  <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.2em] text-brand-gold">
-                    <span>Expedição Prevista</span>
-                    <span>Q3 2024</span>
-                  </div>
-                  <div className="w-full h-1.5 bg-brand-navy rounded-full mt-3 overflow-hidden">
-                    <div className="w-[65%] h-full bg-brand-gold shadow-[0_0_10px_rgba(255,215,0,0.5)]"></div>
-                  </div>
-                </div>
-             </div>
-          </div>
-
-          <div className="order-1 md:order-2 space-y-12">
-            <div className="space-y-4">
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">Fluxo de Parceria</span>
-              <h2 className="text-4xl md:text-6xl font-bold uppercase leading-[0.9]">Como se tornar <br/><span className="text-brand-purple italic">Pioneiro.</span></h2>
-            </div>
-            
-            <div className="space-y-10">
-              {[
-                { title: "Escolha sua Cota", desc: "Adquira unidades individuais para demonstração ou lotes corporativos." },
-                { title: "Exclusividade Local", desc: "Posicionamento estratégico em Postos, Shoppings e Estacionamentos." },
-                { title: "Gestão Burocrática", desc: "Cuidamos de todo o processo de desembaraço e importação direta." }
-              ].map((step, idx) => (
-                <div key={idx} className="flex gap-8 group">
-                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center text-white font-bold group-hover:bg-brand-purple group-hover:border-brand-purple transition-all duration-300">
-                    0{idx + 1}
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="text-xl font-bold uppercase tracking-tight">{step.title}</h4>
-                    <p className="text-slate-400 text-sm font-light leading-relaxed">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <button className="px-10 py-5 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform uppercase text-xs tracking-widest flex items-center gap-4">
-              Aplicar para Representação
-              <ChevronRight size={18} />
-            </button>
           </div>
         </div>
       </section>
@@ -437,9 +524,6 @@ export default function App() {
               <h5 className="text-[10px] uppercase tracking-[0.3em] font-bold text-slate-400">Plataforma</h5>
               <ul className="space-y-4 text-xs font-light text-slate-500">
                 <li><a href="#" className="hover:text-brand-gold transition-colors">Início</a></li>
-                <li><a href="#tech" className="hover:text-brand-gold transition-colors">Hardware</a></li>
-                <li><a href="#business" className="hover:text-brand-gold transition-colors">Negócios</a></li>
-                <li><a href="#import" className="hover:text-brand-gold transition-colors">Importação</a></li>
               </ul>
             </div>
             <div className="space-y-6">

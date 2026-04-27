@@ -496,6 +496,37 @@ export default function App() {
         </div>
       </section>
 
+      {/* Lavanderia Section */}
+      <section className="py-32 px-10 relative bg-brand-navy">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-blue/5 blur-[120px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6 order-2 lg:order-1">
+                <span className="text-brand-gold text-[10px] font-bold uppercase tracking-[0.3em]">Lavanderia Inteligente</span>
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight uppercase">Conheça a <br/><span className="text-brand-gold">Link Lavanderia</span></h2>
+                <p className="text-slate-400 font-light leading-relaxed">
+                    Mais que limpeza de capacetes, oferecemos uma experiência completa de lavanderia self-service. Tecnologia de ponta para cuidar de suas roupas de forma rápida, eficiente e autônoma.
+                </p>
+                <div className="pt-4">
+                    <a href="https://link-lavanderia.vercel.app/" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-brand-gold text-brand-navy font-bold rounded-full hover:scale-105 transition-transform uppercase text-xs tracking-widest inline-flex items-center gap-4">
+                        Visitar Site da Lavanderia
+                        <ArrowRight size={18} />
+                    </a>
+                </div>
+            </div>
+            <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-white/10 glow-gold shadow-2xl order-1 lg:order-2">
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src="https://res.cloudinary.com/dqukldtq1/video/upload/v1777253864/link_grok_video_kxlmum.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="px-10 py-20 border-t border-white/5 bg-black/40 backdrop-blur-lg mt-auto">
         <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-16">
